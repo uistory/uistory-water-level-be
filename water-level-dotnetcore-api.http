@@ -1,0 +1,6 @@
+@water_level_dotnetcore_api_HostAddress = http://localhost:5122
+
+GET {{water_level_dotnetcore_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
