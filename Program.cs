@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using StatusApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using water_level_dotnetcore_api.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -12,6 +13,8 @@ var defaultConnection = "Server=tcp:uistory-db-server.database.windows.net,1433;
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<ISensorStatusService, SensorStatusService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
