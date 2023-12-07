@@ -27,10 +27,10 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(defaultConnection));
-//builder.Services.AddDbContext<DataContext>(opt =>
-//  opt.UseInMemoryDatabase("TestDb"));
+// builder.Services.AddDbContext<DataContext>(options =>
+//     options.UseSqlServer(defaultConnection));
+builder.Services.AddDbContext<DataContext>(opt =>
+  opt.UseInMemoryDatabase("TestDb"));
 
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
