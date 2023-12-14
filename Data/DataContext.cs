@@ -13,5 +13,16 @@ namespace water_level_dotnetcore_api.Data
 
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<SensorStatus>()
+                .HasOne(s => s.User)
+                .WithMany()
+                .HasForeignKey(s => s.UserId)
+                .IsRequired();
+        }
     }
 }

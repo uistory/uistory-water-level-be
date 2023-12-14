@@ -8,7 +8,7 @@ using water_level_dotnetcore_api.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
-var defaultConnection = "Server=tcp:uistory-db-server.database.windows.net,1433;Initial Catalog=test-petres-db;Persist Security Info=False;User ID=petres;Password=F1c15925;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+var defaultConnection = "Server=tcp:water-level.database.windows.net,1433;Initial Catalog=water-level-db;Persist Security Info=False;User ID=petres;Password=F1c15925;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
 // Add services to the container.
 
@@ -27,10 +27,10 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
-// builder.Services.AddDbContext<DataContext>(options =>
-//     options.UseSqlServer(defaultConnection));
-builder.Services.AddDbContext<DataContext>(opt =>
-  opt.UseInMemoryDatabase("TestDb"));
+builder.Services.AddDbContext<DataContext>(options =>
+     options.UseSqlServer(defaultConnection));
+// builder.Services.AddDbContext<DataContext>(opt =>
+//   opt.UseInMemoryDatabase("TestDb"));
 
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
